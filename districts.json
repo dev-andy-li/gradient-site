@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "districts": [
+    {
+      "id": "stjohns-fl",
+      "name": "St. Johns County School District",
+      "place": "St. Augustine, FL",
+      "url": "https://homeaccesscenter.stjohns.k12.fl.us",
+      "aliases": ["SJCSD", "St Johns", "Saint Johns", "St. Augustine", "Ponte Vedra"],
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+:root {
+  --ground: #f7f3ea; --ink: #1d1b17; --ink2: #5f594d; --rule: #d9d1c0; --well: #ede6d6; --accent: #2f6b45;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ground: #161513; --ink: #efe9dc; --ink2: #a9a191; --rule: #3a362f; --well: #221f1b; --accent: #7cc79a; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font: 17px/1.6 "New York", "Iowan Old Style", Georgia, serif;
+}
+main { max-width: 680px; margin: 0 auto; padding: 40px 18px 64px; }
+header { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 28px; }
+header a { color: var(--ink2); text-decoration: none; font: 600 14px/1 -apple-system, system-ui, sans-serif; }
+h1 { font-size: 34px; line-height: 1.15; margin: 10px 0 4px; letter-spacing: -0.5px; }
+h2 { font-size: 21px; margin: 34px 0 6px; }
+.dated, .note { color: var(--ink2); font-style: italic; }
+a { color: var(--accent); }
+.box { background: var(--well); border-radius: 14px; padding: 16px 18px; margin: 18px 0; }
+code { font: 15px ui-monospace, Menlo, monospace; background: var(--well); padding: 1px 5px; border-radius: 5px; word-break: break-all; }
+footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--rule); color: var(--ink2);
+  font: 13px/1.5 -apple-system, system-ui, sans-serif; }
+nav.links a { margin-right: 14px; }

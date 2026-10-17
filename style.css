@@ -8,8 +8,11 @@
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--ground); color: var(--ink);
-  font: 17px/1.6 ui-serif, "New York", "Iowan Old Style", Georgia, serif;
+  font: 17px/1.55 -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
+/* Headings and the line under each page title in New York, like the app;
+   ui-serif is Safari's name for it. */
+h1, h2, h3, .dated, .note { font-family: ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
 main { max-width: 680px; margin: 0 auto; padding: 40px 18px 64px; }
 header { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 28px; }
 header a { color: var(--ink2); text-decoration: none; font: 600 14px/1 -apple-system, system-ui, sans-serif; }

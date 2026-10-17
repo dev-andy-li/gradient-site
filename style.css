@@ -8,7 +8,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--ground); color: var(--ink);
-  font: 17px/1.6 "New York", "Iowan Old Style", Georgia, serif;
+  font: 17px/1.6 ui-serif, "New York", "Iowan Old Style", Georgia, serif;
 }
 main { max-width: 680px; margin: 0 auto; padding: 40px 18px 64px; }
 header { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 28px; }

@@ -1,11 +1,13 @@
 /* The app's sans look (Gradient's docs/design/README.md): SF Pro for
    everything, graphite ink on white or soft white on a neutral charcoal,
-   monochrome chrome, no cards or heavy rules. Colors are the app's default
-   theme tokens (DesignSystem/Themes.swift). */
+   no cards or heavy rules. Colors are the app's default theme tokens
+   (DesignSystem/Themes.swift); the accent is the blue of the app's
+   average ring (the B band's stroke). */
 :root {
   --ground: #ffffff; --well: #f2f2f5; --raised: #ffffff;
   --ink: #0d0d12; --ink2: #5e5e69; --ink3: #7f7f8b;
   --rule: rgba(13, 13, 18, 0.09);
+  --accent: #3b7bf0; --on-accent: #ffffff;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -13,6 +15,7 @@
     --ground: #161617; --well: #242426; --raised: #3c3c40;
     --ink: #f5f5f7; --ink2: #aeaeb4; --ink3: #86868c;
     --rule: rgba(245, 245, 247, 0.10);
+    --accent: #5e93f5; --on-accent: #ffffff;
   }
 }
 * { box-sizing: border-box; }
@@ -27,8 +30,7 @@ main { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
 
 /* Header: the home link, a bold tightly tracked title, an ink2 line under it. */
 header { margin-bottom: 28px; }
-header a { color: var(--ink2); text-decoration: none; font-size: 15px; font-weight: 600; }
-header a:hover { color: var(--ink); }
+header a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 600; }
 h1 { font-size: 34px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin: 6px 0 6px; }
 .dated, .note { display: block; color: var(--ink2); font-size: 15px; }
 
@@ -39,10 +41,11 @@ ul, ol { padding-left: 1.3em; }
 li { margin: 4px 0; }
 li::marker { color: var(--ink3); }
 
-/* Links are ink, like the app's chrome; color is only for grades. */
-a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink3);
+/* Links in the accent blue. */
+a { color: var(--accent); text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
   text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { text-decoration-color: var(--ink); }
+a:hover { text-decoration-color: var(--accent); }
 
 /* A quiet well box, flat: no border or shadow. */
 .box { background: var(--well); border-radius: 14px; padding: 16px 18px; margin: 20px 0; }
@@ -50,11 +53,11 @@ code { font: 15px ui-monospace, "SF Mono", Menlo, monospace; background: var(--w
   padding: 1px 6px; border-radius: 6px; word-break: break-all; }
 .box code { background: var(--ground); }
 
-/* The home page's links: well capsules, like the app's quiet buttons. */
+/* The home page's links: capsules filled with the accent. */
 nav.links { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
-nav.links a { background: var(--well); border-radius: 999px; padding: 8px 16px;
+nav.links a { background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: 8px 16px;
   font-size: 15px; font-weight: 600; text-decoration: none; }
-nav.links a:hover { background: var(--rule); }
+nav.links a:hover { filter: brightness(1.08); }
 
 footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--rule);
   color: var(--ink2); font-size: 13px; line-height: 1.5; }

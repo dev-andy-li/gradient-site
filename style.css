@@ -1,27 +1,60 @@
+/* The app's sans look (Gradient's docs/design/README.md): SF Pro for
+   everything, graphite ink on white or soft white on a neutral charcoal,
+   monochrome chrome, no cards or heavy rules. Colors are the app's default
+   theme tokens (DesignSystem/Themes.swift). */
 :root {
-  --ground: #f7f3ea; --ink: #1d1b17; --ink2: #5f594d; --rule: #d9d1c0; --well: #ede6d6; --accent: #2f6b45;
+  --ground: #ffffff; --well: #f2f2f5; --raised: #ffffff;
+  --ink: #0d0d12; --ink2: #5e5e69; --ink3: #7f7f8b;
+  --rule: rgba(13, 13, 18, 0.09);
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --ground: #161513; --ink: #efe9dc; --ink2: #a9a191; --rule: #3a362f; --well: #221f1b; --accent: #7cc79a; }
+  :root {
+    --ground: #161617; --well: #242426; --raised: #3c3c40;
+    --ink: #f5f5f7; --ink2: #aeaeb4; --ink3: #86868c;
+    --rule: rgba(245, 245, 247, 0.10);
+  }
 }
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--ground); color: var(--ink);
-  font: 17px/1.55 -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
-/* Headings and the line under each page title in New York, like the app;
-   ui-serif is Safari's name for it. */
-h1, h2, h3, .dated, .note { font-family: ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
-main { max-width: 680px; margin: 0 auto; padding: 40px 18px 64px; }
-header { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 28px; }
-header a { color: var(--ink2); text-decoration: none; font: 600 14px/1 -apple-system, system-ui, sans-serif; }
-h1 { font-size: 34px; line-height: 1.15; margin: 10px 0 4px; letter-spacing: -0.5px; }
-h2 { font-size: 21px; margin: 34px 0 6px; }
-.dated, .note { color: var(--ink2); font-style: italic; }
-a { color: var(--accent); }
-.box { background: var(--well); border-radius: 14px; padding: 16px 18px; margin: 18px 0; }
-code { font: 15px ui-monospace, Menlo, monospace; background: var(--well); padding: 1px 5px; border-radius: 5px; word-break: break-all; }
-footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--rule); color: var(--ink2);
-  font: 13px/1.5 -apple-system, system-ui, sans-serif; }
-nav.links a { margin-right: 14px; }
+main { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
+
+/* Header: the home link, a bold tightly tracked title, an ink2 line under it. */
+header { margin-bottom: 28px; }
+header a { color: var(--ink2); text-decoration: none; font-size: 15px; font-weight: 600; }
+header a:hover { color: var(--ink); }
+h1 { font-size: 34px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin: 6px 0 6px; }
+.dated, .note { display: block; color: var(--ink2); font-size: 15px; }
+
+/* Section titles: bold, no rule under them. */
+h2 { font-size: 20px; line-height: 1.25; font-weight: 700; letter-spacing: -0.03em; margin: 36px 0 6px; }
+strong { font-weight: 600; }
+ul, ol { padding-left: 1.3em; }
+li { margin: 4px 0; }
+li::marker { color: var(--ink3); }
+
+/* Links are ink, like the app's chrome; color is only for grades. */
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink3);
+  text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--ink); }
+
+/* A quiet well box, flat: no border or shadow. */
+.box { background: var(--well); border-radius: 14px; padding: 16px 18px; margin: 20px 0; }
+code { font: 15px ui-monospace, "SF Mono", Menlo, monospace; background: var(--well);
+  padding: 1px 6px; border-radius: 6px; word-break: break-all; }
+.box code { background: var(--ground); }
+
+/* The home page's links: well capsules, like the app's quiet buttons. */
+nav.links { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+nav.links a { background: var(--well); border-radius: 999px; padding: 8px 16px;
+  font-size: 15px; font-weight: 600; text-decoration: none; }
+nav.links a:hover { background: var(--rule); }
+
+footer { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--rule);
+  color: var(--ink2); font-size: 13px; line-height: 1.5; }

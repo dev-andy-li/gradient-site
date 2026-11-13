@@ -82,25 +82,16 @@ nav.top a { text-decoration: none; }
 .ghost { background: var(--well); color: var(--ink); text-decoration: none; }
 .ghost:hover { color: var(--accent); }
 
-/* Posters: the nine App Store screenshots as one rounded panorama, full
-   bleed, scrolled sideways with no scroll bar. The first poster lines up
-   with the page's left edge. */
+/* Posters: the nine App Store screenshots as one panorama, full bleed from
+   the screen's left edge, with no scroll bar. The script in index.html makes
+   it drift on a loop. */
 .home { overflow-x: clip; }
 .posters { width: 100vw; margin-left: calc(50% - 50vw); }
-.strip { --inset: max(20px, calc(50vw - 480px)); overflow-x: auto; scrollbar-width: none;
-  scroll-snap-type: x proximity; scroll-padding: 0 var(--inset); padding: 0 var(--inset); outline: none; }
+.strip { overflow-x: auto; scrollbar-width: none; outline: none; }
 .strip::-webkit-scrollbar { display: none; }
-.pano { display: flex; width: max-content; border-radius: 28px; overflow: hidden;
-  box-shadow: 0 0 0 1px var(--rule); }
-.pano img { display: block; height: 600px; width: auto; scroll-snap-align: start; }
-.arrows { display: flex; justify-content: flex-end; gap: 10px; max-width: 1000px; margin: 16px auto 0; padding: 0 20px; }
-.arrows button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--well);
-  color: var(--ink); cursor: pointer; display: grid; place-items: center; padding: 0; }
-.arrows button:hover { background: color-mix(in srgb, var(--well) 80%, var(--ink)); }
-.arrows svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2;
-  stroke-linecap: round; stroke-linejoin: round; }
-@media (max-width: 760px) { .pano img { height: 480px; } .pano { border-radius: 22px; } }
-@media (hover: none) { .arrows { display: none; } }
+.pano { display: flex; width: max-content; }
+.pano img { display: block; height: 600px; width: auto; }
+@media (max-width: 760px) { .pano img { height: 480px; } }
 
 /* Features: a 3×3 grid of an accent line icon, a bold name and one line. */
 h2.section { font-size: 32px; line-height: 1.15; letter-spacing: -0.035em; text-align: center; margin: 88px 0 36px; }

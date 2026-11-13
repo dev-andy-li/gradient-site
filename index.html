@@ -50,8 +50,9 @@
   </section>
 
   <!-- The nine App Store screenshots, edge to edge: they read as one
-       panorama (the green band runs through all of them). Swipe on a phone;
-       the arrows scroll it with a mouse. -->
+       panorama (the green band runs through all of them). It drifts slowly
+       on a loop (the script below), pauses under the mouse or a finger, and
+       can be swiped. -->
   <section class="posters" aria-label="Screenshots">
     <div class="strip" id="strip" tabindex="0">
       <div class="pano">
@@ -65,10 +66,6 @@
         <img src="img/posters/8.webp" alt="Beautiful themes and icons" width="660" height="1434" loading="lazy">
         <img src="img/posters/9.webp" alt="Private and secure, with App Lock" width="660" height="1434" loading="lazy">
       </div>
-    </div>
-    <div class="arrows">
-      <button type="button" data-dir="-1" aria-label="Previous screenshots"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></button>
-      <button type="button" data-dir="1" aria-label="Next screenshots"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></button>
     </div>
   </section>
 
@@ -117,10 +114,46 @@
   </footer>
 </main>
 <script>
-  // Arrow buttons: scroll the strip by most of its visible width.
-  const strip = document.getElementById('strip');
-  for (const b of document.querySelectorAll('.arrows button'))
-    b.addEventListener('click', () => strip.scrollBy({ left: b.dataset.dir * strip.clientWidth * 0.8, behavior: 'smooth' }));
+  // The poster strip drifts left on a loop. The nine posters are cloned
+  // twice; the strip sits in the middle copy and jumps back by one copy's
+  // width when it runs past it, which looks seamless. It holds still under
+  // the mouse, while touched (and a moment after), and not at all with
+  // Reduce Motion on.
+  (() => {
+    const strip = document.getElementById('strip'), pano = strip.firstElementChild;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const originals = [...pano.children];
+    for (let k = 0; k < 2; k++) for (const img of originals) {
+      const c = img.cloneNode(); c.alt = ''; c.removeAttribute('loading'); c.setAttribute('aria-hidden', 'true');
+      k ? pano.append(c) : pano.prepend(c.cloneNode());
+    }
+    const SPEED = 24;                       // px per second
+    const copy = () => pano.scrollWidth / 3;
+    let pos = copy(), last = 0, held = false, resume = 0;
+    strip.scrollLeft = pos;
+    const wait = (ms) => { resume = performance.now() + ms; };
+    strip.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') held = true; });
+    strip.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') held = false; });
+    strip.addEventListener('touchstart', () => { held = true; }, { passive: true });
+    strip.addEventListener('touchend', () => { held = false; wait(2500); }, { passive: true });
+    strip.addEventListener('wheel', () => wait(2500), { passive: true });
+    strip.addEventListener('focusin', () => { held = true; });
+    strip.addEventListener('focusout', () => { held = false; });
+    const tick = (t) => {
+      const dt = last ? Math.min(t - last, 100) : 0; last = t;
+      if (held || t < resume) {
+        pos = strip.scrollLeft;             // follow a swipe or a trackpad
+      } else {
+        if (Math.abs(strip.scrollLeft - Math.round(pos)) > 1) pos = strip.scrollLeft;
+        pos += SPEED * dt / 1000;
+        const w = copy();
+        if (pos >= 2 * w) pos -= w; else if (pos < w) pos += w;
+        strip.scrollLeft = Math.round(pos);
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  })();
 </script>
 </body>
 </html>

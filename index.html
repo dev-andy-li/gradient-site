@@ -3,18 +3,122 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gradient</title>
-<meta name="description" content="Gradient: a fast, private grade viewer for Home Access Center.">
+<title>Gradient: grades for Home Access Center</title>
+<meta name="description" content="A fast, clean, and beautifully designed grade checker for Home Access Center. No ads, no tracking, and a free what-if calculator.">
+<meta property="og:title" content="Gradient">
+<meta property="og:description" content="A fast, clean, and beautifully designed grade checker for Home Access Center.">
+<meta property="og:image" content="img/icon.png">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<main>
-  <header><h1>Gradient</h1><span class="note">A fast, private grade viewer for Home Access Center</span></header>
-  <p>A grade checker app for Home Access Center. Made by students, for students.</p>
-  <p>This app is designed for user privacy. There is zero telemetry, analytics, or personal information collection. All accounts and actions are performed and stored on your device only.</p>
-  <p>There is an optional subscription priced at $3.99/year for those who want to support development. It unlocks themes, app icons, and other features (analysis, calendar, additional accounts).</p>
-  <nav class="links"><a href="support.html">Support/FAQ</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-  <footer>Gradient is not affiliated with or endorsed by PowerSchool, Home Access Center, or any school district.</footer>
+<body class="home">
+
+<!-- Feature icons, drawn once and reused below. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-noads" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7.5h7M9 12h.01M12 12h.01M15 12h.01M9 15.5h.01M12 15.5h.01M15 15.5h.01"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5H5z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M3.5 9.5L12 5l8.5 4.5M5.5 10.5v7M9.5 10.5v7M14.5 10.5v7M18.5 10.5v7M3.5 20h17"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4.5 4.5V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M13.5 3v5h5M8.5 12.5h7M8.5 16h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01"/></symbol>
+  </defs>
+</svg>
+
+<nav class="top">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="28" height="28">Gradient</a>
+  <span class="top-links"><a href="#features">Features</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></span>
+</nav>
+
+<main class="wide">
+
+  <section class="hero">
+    <picture>
+      <source srcset="img/icon-dark.png" media="(prefers-color-scheme: dark)">
+      <img class="app-icon" src="img/icon.png" alt="Gradient app icon" width="120" height="120">
+    </picture>
+    <h1>Gradient</h1>
+    <p class="lede">A fast, clean, and beautifully designed grade checker for Home Access Center.</p>
+    <p class="sub">Made by students, for students. No ads, no tracking.</p>
+    <div class="cta">
+      <span class="soon">Coming soon to the App Store</span>
+      <a class="ghost" href="support.html">Is my district supported?</a>
+    </div>
+  </section>
+
+  <!-- App Store style posters: a headline over a cropped phone screen. -->
+  <section class="posters" aria-label="Screenshots">
+    <figure class="poster p-green">
+      <figcaption><strong>Every class at a glance</strong><span>Your averages, color-coded and easy to scan.</span></figcaption>
+      <div class="phone"><picture>
+        <source srcset="img/grades-dark.webp" media="(prefers-color-scheme: dark)">
+        <img src="img/grades-light.webp" alt="The Grades screen, listing seven classes with their averages" width="780" height="1688" loading="lazy">
+      </picture></div>
+    </figure>
+    <figure class="poster p-blue">
+      <figcaption><strong>Behind every grade</strong><span>Summative and formative, every assignment, and what-if.</span></figcaption>
+      <div class="phone"><picture>
+        <source srcset="img/class-dark.webp" media="(prefers-color-scheme: dark)">
+        <img src="img/class-light.webp" alt="A class page with the overall average in a ring and a list of assignments" width="780" height="1688" loading="lazy">
+      </picture></div>
+    </figure>
+    <figure class="poster p-ink">
+      <figcaption><strong>Light or dark</strong><span>Follows your iPhone, or pick one in Settings.</span></figcaption>
+      <!-- Shows the scheme the visitor isn't using. -->
+      <div class="phone"><picture>
+        <source srcset="img/grades-light.webp" media="(prefers-color-scheme: dark)">
+        <img src="img/grades-dark.webp" alt="The Grades screen in the other color scheme" width="780" height="1688" loading="lazy">
+      </picture></div>
+    </figure>
+  </section>
+
+  <section id="features" class="features">
+    <h2 class="section">Everything you check HAC for, done better</h2>
+    <div class="grid">
+      <div class="feat"><svg class="ic"><use href="#i-noads"/></svg><h3>Zero ads</h3><p>No banners, pop-ups, or sponsored anything. Just your grades.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-calc"/></svg><h3>What-if calculator</h3><p>Try out scores, or find what you need to hit a target average. Free.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-bell"/></svg><h3>New grade notifications</h3><p>Know when a grade is posted, without opening HAC to check.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-school"/></svg><h3>Works with HAC</h3><p>Sign in with your usual Home Access Center login. Many districts are built in, and you can add yours.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-lock"/></svg><h3>Nothing collected</h3><p>No information collection, telemetry, or analytics. Your login and grades stay on your phone.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-bolt"/></svg><h3>Clean and blazing fast</h3><p>Opens straight to your grades, and works offline with your last refresh.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-doc"/></svg><h3>Transcripts and report cards</h3><p>Your transcript, report cards, progress reports, and absences in one place.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-clock"/></svg><h3>Overview and due dates</h3><p>What's due soon and your latest grades, on one screen.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-cal"/></svg><h3>Assignment calendar <span class="tag">Supporter</span></h3><p>Every assignment laid out on a month calendar.</p></div>
+    </div>
+  </section>
+
+  <section class="banner">
+    <svg class="ic big" aria-hidden="true"><use href="#i-lock"/></svg>
+    <div>
+      <h2>Your grades stay on your phone</h2>
+      <p>Gradient signs in to your district's Home Access Center straight from your phone, the same way Safari does. There's no Gradient account and no server in the middle, so there's nothing to collect. <a href="privacy.html">Read the privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section class="supporter">
+    <h2 class="section">Gradient Supporter</h2>
+    <p>Gradient is free. An optional subscription, <strong>$3.99 a year</strong>, supports development and unlocks themes, app icons, the calendar, Analysis, and more students.</p>
+    <div class="icons" aria-label="Alternate app icons">
+      <img src="img/icons/classic.webp" alt="Classic" width="64" height="64" loading="lazy">
+      <img src="img/icons/spectrum.webp" alt="Spectrum" width="64" height="64" loading="lazy">
+      <img src="img/icons/sunset.webp" alt="Sunset" width="64" height="64" loading="lazy">
+      <img src="img/icons/aurora.webp" alt="Aurora" width="64" height="64" loading="lazy">
+      <img src="img/icons/sky.webp" alt="Sky" width="64" height="64" loading="lazy">
+      <img src="img/icons/lavender.webp" alt="Lavender" width="64" height="64" loading="lazy">
+      <img src="img/icons/rose.webp" alt="Rose" width="64" height="64" loading="lazy">
+      <img src="img/icons/midnight.webp" alt="Midnight" width="64" height="64" loading="lazy">
+      <img src="img/icons/ink.webp" alt="Ink" width="64" height="64" loading="lazy">
+    </div>
+  </section>
+
+  <footer>
+    <nav class="foot-links"><a href="support.html">Support/FAQ</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:dev.andy.li@icloud.com">Contact</a></nav>
+    Gradient is not affiliated with or endorsed by PowerSchool, Home Access Center, or any school district.
+  </footer>
 </main>
 </body>
 </html>

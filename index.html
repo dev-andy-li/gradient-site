@@ -30,18 +30,17 @@
 </svg>
 
 <nav class="top">
-  <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="28" height="28">Gradient</a>
+  <a class="brand" href="index.html" aria-label="Gradient home"><picture><source srcset="img/icon-dark.png" media="(prefers-color-scheme: dark)"><img src="img/icon.png" alt="" width="30" height="30"></picture></a>
   <span class="top-links"><a href="#features">Features</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></span>
 </nav>
 
 <main class="wide">
 
   <section class="hero">
-    <picture>
-      <source srcset="img/icon-dark.png" media="(prefers-color-scheme: dark)">
-      <img class="app-icon" src="img/icon.png" alt="Gradient app icon" width="120" height="120">
-    </picture>
-    <h1>Gradient</h1>
+    <h1 class="wordmark"><picture>
+      <source srcset="img/wordmark-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="img/wordmark-light.svg" alt="Gradient" width="3463" height="664">
+    </picture></h1>
     <p class="lede">A fast, clean, and beautifully designed grade checker for Home Access Center.</p>
     <p class="sub">Made by students, for students. No ads, no tracking.</p>
     <div class="cta">
@@ -50,30 +49,27 @@
     </div>
   </section>
 
-  <!-- App Store style posters: a headline over a cropped phone screen. -->
+  <!-- The nine App Store screenshots, edge to edge: they read as one
+       panorama (the green band runs through all of them). Swipe on a phone;
+       the arrows scroll it with a mouse. -->
   <section class="posters" aria-label="Screenshots">
-    <figure class="poster p-green">
-      <figcaption><strong>Every class at a glance</strong><span>Your averages, color-coded and easy to scan.</span></figcaption>
-      <div class="phone"><picture>
-        <source srcset="img/grades-dark.webp" media="(prefers-color-scheme: dark)">
-        <img src="img/grades-light.webp" alt="The Grades screen, listing seven classes with their averages" width="780" height="1688" loading="lazy">
-      </picture></div>
-    </figure>
-    <figure class="poster p-blue">
-      <figcaption><strong>Behind every grade</strong><span>Summative and formative, every assignment, and what-if.</span></figcaption>
-      <div class="phone"><picture>
-        <source srcset="img/class-dark.webp" media="(prefers-color-scheme: dark)">
-        <img src="img/class-light.webp" alt="A class page with the overall average in a ring and a list of assignments" width="780" height="1688" loading="lazy">
-      </picture></div>
-    </figure>
-    <figure class="poster p-ink">
-      <figcaption><strong>Light or dark</strong><span>Follows your iPhone, or pick one in Settings.</span></figcaption>
-      <!-- Shows the scheme the visitor isn't using. -->
-      <div class="phone"><picture>
-        <source srcset="img/grades-light.webp" media="(prefers-color-scheme: dark)">
-        <img src="img/grades-dark.webp" alt="The Grades screen in the other color scheme" width="780" height="1688" loading="lazy">
-      </picture></div>
-    </figure>
+    <div class="strip" id="strip" tabindex="0">
+      <div class="pano">
+        <img src="img/posters/1.webp" alt="View your HAC grades at a glance" width="660" height="1434">
+        <img src="img/posters/2.webp" alt="See averages, assignments and breakdowns" width="660" height="1434">
+        <img src="img/posters/3.webp" alt="Find the score you need, with the what-if calculator" width="660" height="1434">
+        <img src="img/posters/4.webp" alt="See impacts and trends in Analysis" width="660" height="1434">
+        <img src="img/posters/5.webp" alt="Get notified when you have new grades" width="660" height="1434" loading="lazy">
+        <img src="img/posters/6.webp" alt="See what's due in Overview and Calendar" width="660" height="1434" loading="lazy">
+        <img src="img/posters/7.webp" alt="Report cards and transcript" width="660" height="1434" loading="lazy">
+        <img src="img/posters/8.webp" alt="Beautiful themes and icons" width="660" height="1434" loading="lazy">
+        <img src="img/posters/9.webp" alt="Private and secure, with App Lock" width="660" height="1434" loading="lazy">
+      </div>
+    </div>
+    <div class="arrows">
+      <button type="button" data-dir="-1" aria-label="Previous screenshots"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+      <button type="button" data-dir="1" aria-label="Next screenshots"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></button>
+    </div>
   </section>
 
   <section id="features" class="features">
@@ -85,7 +81,7 @@
       <div class="feat"><svg class="ic"><use href="#i-school"/></svg><h3>Works with HAC</h3><p>Sign in with your usual Home Access Center login. Many districts are built in, and you can add yours.</p></div>
       <div class="feat"><svg class="ic"><use href="#i-lock"/></svg><h3>Nothing collected</h3><p>No information collection, telemetry, or analytics. Your login and grades stay on your phone.</p></div>
       <div class="feat"><svg class="ic"><use href="#i-bolt"/></svg><h3>Clean and blazing fast</h3><p>Opens straight to your grades, and works offline with your last refresh.</p></div>
-      <div class="feat"><svg class="ic"><use href="#i-doc"/></svg><h3>Transcripts and report cards</h3><p>Your transcript, report cards, progress reports, and absences in one place.</p></div>
+      <div class="feat"><svg class="ic"><use href="#i-doc"/></svg><h3>Transcripts and report cards</h3><p>Your transcript and GPA, report cards, progress reports, and absences in one place.</p></div>
       <div class="feat"><svg class="ic"><use href="#i-clock"/></svg><h3>Overview and due dates</h3><p>What's due soon and your latest grades, on one screen.</p></div>
       <div class="feat"><svg class="ic"><use href="#i-cal"/></svg><h3>Assignment calendar <span class="tag">Supporter</span></h3><p>Every assignment laid out on a month calendar.</p></div>
     </div>
@@ -120,5 +116,11 @@
     Gradient is not affiliated with or endorsed by PowerSchool, Home Access Center, or any school district.
   </footer>
 </main>
+<script>
+  // Arrow buttons: scroll the strip by most of its visible width.
+  const strip = document.getElementById('strip');
+  for (const b of document.querySelectorAll('.arrows button'))
+    b.addEventListener('click', () => strip.scrollBy({ left: b.dataset.dir * strip.clientWidth * 0.8, behavior: 'smooth' }));
+</script>
 </body>
 </html>
